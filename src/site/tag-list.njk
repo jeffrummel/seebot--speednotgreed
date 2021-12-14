@@ -1,0 +1,16 @@
+---
+title: Tags
+permalink: /tags/all/
+layout: _index.njk
+---
+
+{% block main %}
+  <main id="main-content" class="site__kickers kickers">
+    <h2 class="kickers__hed">{{ title }}</h2>
+
+    {% for tag in collections.tagList %}
+      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+    {% endfor %}
+  </main>
+{% endblock %}

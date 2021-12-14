@@ -1,0 +1,10 @@
+{% extends "_partials/wrapper.njk" %}
+{% block main %}
+	<body class="site">
+	{% block header %}
+		{% include "_partials/header.njk" %}
+	{% endblock %}
+
+  {{ content | safe }}
+
+{% endblock %}

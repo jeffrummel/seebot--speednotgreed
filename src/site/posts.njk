@@ -1,0 +1,70 @@
+---
+title: News
+layout: _index.njk
+pagination:
+  data: collections.posts
+  size: 14
+  reverse: false
+testdata:
+  - My Item
+permalink: "news/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+
+{% block main %}
+  <main id="main-content" class="site__kickers kickers">
+    <header class="kickers__hed">{{ title }}</header>
+
+{%- for item in pagination.items -%}
+  <article class="kickers__item kicker">
+      <h3 class="kicker--hed">
+        <a class="kicker--link" href="{{ item.data.url if item.data.url else item.url  | url }}" title="Link to {{ item.data.title }}">{{ item.data.title }}</a>
+      </h3>
+      <h5 class="kicker--sub">{{ item.data.date | readableDate }}</h5>
+      <p class="kicker--dek">{{ item.data.dek }}</p>
+      <figure class="kicker--grfx">
+      {% set regExp = r/^(http|https).*/g %}
+      {% if item.data.thumbnail and regExp.test(item.data.thumbnail) %}
+        <img src="{{ item.data.thumbnail }}">
+      {% elif item.data.thumbnail %}
+        <img class="lazy"
+          style="background: url('/pre{{ item.data.thumbnail }}') no-repeat center;background-size:100% auto;" 
+          data-srcset="/m{{ item.data.thumbnail }} 320w,/t{{ item.data.thumbnail }} 760w"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="{{ item.data.thumbnail }}"
+          src="/m{{ item.data.thumbnail }}"
+          alt="{{ item.data.title }}"
+        />
+        {% else %}
+        <img class="lazy"
+          style="background: url('/pre/img/uploads/placeholder.png') no-repeat center;background-size:100% auto;" 
+          data-srcset="/m/img/uploads/placeholder.png 320w,/t/img/uploads/placeholder.png 760w"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="/img/uploads/placeholder.png"
+          src="/m/img/uploads/placeholder.png"
+          alt="{{ item.data.title }}"
+        />
+      {% endif %}
+      </figure>
+  </article>
+{%- endfor -%}
+
+{% if pagination.pageLinks.length > 1 %}
+<nav class="pagination">
+  {% if pagination.previousPageLink %}
+    <a class="pagination__item" href="{{ pagination.previousPageHref | url }}">Newer Articles</a>
+  {% else %}
+    <span class="pagination__item">Newer Articles</span>
+  {% endif %}
+
+  {% if pagination.nextPageLink %}
+    <a class="pagination__item" href="{{ pagination.nextPageHref | url }}">Older Articles</a>
+  {% else %}
+    <span class="pagination__item">Older Articles</span>
+  {% endif %}
+</nav>
+{% endif %}</ul>
+    {# {% set itemKicker = collections.posts  %}
+    {% include "_components/kickers.njk" %} #}
+
+  </main>
+{% endblock %}

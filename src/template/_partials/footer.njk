@@ -1,0 +1,11 @@
+<footer class="site__foot foot">
+  {% if metadata.showThemeCredit === true %}
+    <p class="foot--credit">{{ metadata.paidFor | safe }}</p>
+  {% endif %}
+  <p class="foot--terms">&copy; {{ site.buildTime | copyDate }} {{ metadata.copyright }}. {{ metadata.shortDesc | safe }} <a href="/privacy-policy" title="Privacy Policy">Privacy Policy</a>.</p>
+</footer>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript">
+  let lazyLoadInstance = new LazyLoad({data_src: "src"});
+</script>
+

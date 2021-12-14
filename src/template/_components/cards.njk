@@ -1,0 +1,22 @@
+{%- for card in cardIndex -%}
+
+    <article class="cards__item card">
+        <h3 class="card--hed"> <a class="card--link" href="{{ card.url | url }}" title="{{ card.data.title }}">{{ card.data.title }}</a></h3>
+        <p class="card--dek">{{ card.data.dek }}</p><a class="card--cta" href="{{ card.url | url }}" title="{{ card.data.title }}">Learn More</a>
+        {% set regExp = r/^(http|https).*/g %}
+        {% if card.data.thumbnail and regExp.test(card.data.thumbnail) %}
+          <figure class="card--grfx"><img src="{{ card.data.thumbnail }}"></figure>
+        {% elif card.data.thumbnail %}
+        <figure class="card--grfx">
+        <img class="lazy"
+          style="background: url('/pre{{ card.data.thumbnail }}') no-repeat center;background-size:100% auto;" 
+          data-srcset="/m{{ card.data.thumbnail }} 320w,/t{{ card.data.thumbnail }} 760w"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="{{ card.data.thumbnail }}"
+          alt="{{ card.data.title }}"
+        />
+        </figure>
+        {% endif %}
+    </article>
+
+{%- endfor -%}

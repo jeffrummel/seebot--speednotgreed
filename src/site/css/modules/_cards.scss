@@ -1,0 +1,63 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/cards/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/cards/card";
+
+.cards {
+  @include cards06;
+  @media screen and (min-width:700px) {
+  // grid-gap:36px;
+  }
+  li {
+    list-style:none;
+  }
+  &__hed {
+    color:$cardHed;
+    text-align:center;
+    @extend %siteH1;
+    margin-bottom:24px;
+    & a:link,
+    & a:visited {
+      color:$cardHed;
+      text-decoration:none;
+    }
+    & a:hover {
+      text-decoration:underline;
+    }
+  }
+}
+.card {
+  @include card06;
+  // gap:18px 36px;
+  box-sizing: border-box;
+  // margin:$gap 0;
+  padding:24px;
+  overflow:hidden;
+  box-shadow: 62.5rem 62.5rem inset rgba(0,0,0,.4);
+  &--hed {
+    padding:$gap;
+    @extend %siteH3;
+    color:$cardHed;
+  }
+  &--dek {
+    padding:$gap;
+    @extend %siteStandardP;
+    color:$cardColor;
+  }
+  &--cta {
+    margin:$gap ($gap * 1.2);
+    @include cta;
+    align-self: flex-start;
+    @extend %siteH5;
+  }
+  &--grfx {
+    left: 0;
+  }
+  &--link:link,
+  &--link:visited {
+    color:$cardLink;
+    text-decoration:none;
+  }
+  &--link:hover {
+    text-decoration:underline;
+  }
+}

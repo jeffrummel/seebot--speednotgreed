@@ -1,0 +1,4 @@
+{
+  "layout": "./_destination.njk",
+  "permalink": "/{{  page.fileSlug  }}/index.html"
+}

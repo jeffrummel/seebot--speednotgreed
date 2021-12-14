@@ -1,0 +1,55 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/marquees/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+
+.marq {
+  grid-column: 2 / span 1;
+  @media screen and (min-width:700px) {
+    padding:64px 0;
+  }
+  @include marq04;
+  a {
+    &:link,
+    &:visited {
+      color:$marqLink;
+    }
+    &:hover {
+      color:$marqLinkHover;
+    }
+  }
+  &__hed {
+    color:$marqHed;
+    margin:8px 0;
+    @extend %siteH1;
+  }
+  &__dek {
+    color:$marqColor;
+    margin:8px 0;
+    max-width: 500px;
+    h3 {
+      @extend %siteH3;
+    }
+    p {
+      @extend %siteStandardP;
+    }
+  }
+  &__form {
+    margin: ($gap / 1.5) -$gap;
+  }
+  input[type="submit"] {
+    border: 0;
+    margin-top: 18px;
+    @include cta;
+    @extend %standardCta;
+  }
+  .marq &--action {
+    margin: ($gap / 1.5) 0;
+    display: inline-block;
+    @include cta;
+    @extend %featureCta;
+    &:link,
+    &:visited {
+      text-shadow: none;
+      color: $marqColor;
+    }
+  }
+}

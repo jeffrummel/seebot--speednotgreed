@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.lang }}">
+
+<head>
+    <meta charset="utf-8">
+    {% block meta %}
+			{% include "./head.njk" %}
+			{% include "./theme.njk" %}
+    {% endblock %}
+
+
+    <link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    {# <script src="/js/loadcss.js" type="text/javascript"></script> #}
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+{# <body class="site dest"> #}
+
+  {% block main %}{% endblock %}
+  {% block footer %}
+  	{% include "./footer.njk" %}
+
+  {% endblock %}
+
+	{% include "../_components/tracker.njk" %}
+
+</body>
+</html>

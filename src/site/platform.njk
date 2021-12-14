@@ -1,0 +1,14 @@
+---
+title: Platform
+layout: _index.njk
+permalink: /platform/index.html
+---
+
+{% block main %}
+  <main id="main-content" class="site__index cards">
+    <h2 class="cards__hed">{{ title }}</h2>
+    {% set cardIndex = collections.platform  %}
+    {% include "_components/cards.njk" %}
+
+  </main>
+{% endblock %}

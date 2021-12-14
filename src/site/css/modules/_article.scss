@@ -1,0 +1,70 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/articles/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+.article {
+  max-width: 874px;
+  min-height:100vh;
+  align-content: start;
+  -ms-grid-column: 2;
+  margin:auto;
+  grid-column: 2 / span 1;
+  color:$foreground;
+  fill:$foreground;
+  @extend %siteStandardP;
+
+  @media screen and (min-width:700px) and (max-width:960px) {
+    grid-column:2 / span 8;
+    padding:56px 0;
+  }
+  @media screen and (min-width:960px) {
+    grid-column:4 / span 8;
+    padding:64px 0;
+  }   
+  @include article01;
+  &__hed {
+    &--title {
+      @extend %siteH1;
+      margin:24px 0;
+    }
+  }
+  &--nut {
+    grid-column:1 / -1; 
+    @extend %siteFeatureP;
+  }
+  &__body {
+    color:$foreground;
+    @import "../base/_bodytxt";
+  }
+  &__links {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    &--link {
+      flex: 0 0 auto;
+      margin-right: 12px;
+      @extend %siteH5;
+      text-transform: uppercase;
+      &:link,
+      &:visited {
+        color: $midground;
+      }
+      &:hover {
+        color: $foreground;
+      }
+    }
+  }
+  &__grfx {
+    grid-row: 1 / span 1;
+    grid-column: 1 / -1;
+    order:-1;
+    overflow:hidden;
+    flex:0 0 482px;
+    @include centerImg;
+    width:100%;
+    height: 100%;
+    > * {
+      min-height:100%;
+    }
+  }
+
+}

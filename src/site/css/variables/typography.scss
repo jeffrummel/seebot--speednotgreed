@@ -1,0 +1,154 @@
+// Headings Typography
+%siteH1 {
+  font-size: 55px;
+  line-height:.76;
+  font-family:$fontHed;
+  font-weight:300;
+  @media screen and (min-width:700px) {
+    font-size: 69px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 138px;
+  }
+}
+%siteH2 {
+  font-size: 36px;
+  line-height:1;
+  font-family:$fontHed;
+  font-weight:300;
+  @media screen and (min-width:700px) {
+    font-size: 55px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 88px;
+  }
+}
+%siteH3 {
+  font-size: 20px;
+  line-height:1.3;
+  font-family:$fontHed;
+  font-weight:900;
+  @media screen and (min-width:700px) {
+    font-size: 24px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 34px;
+  }
+}
+%siteH4 {
+  font-size: 18px;
+  line-height:1.3;
+  font-family:$fontHed;
+  font-weight:900;
+  @media screen and (min-width:700px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 28px;
+  }
+}
+%siteH5 {
+  font-size: 14px;
+  line-height:1.3;
+  font-family:$fontBody;
+  font-weight:900;
+  @media screen and (min-width:700px) {
+    // font-size: 16px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 18px;
+  }
+}
+%siteH6 {
+  font-size: 14px;
+  line-height:1.3;
+  font-family:$fontBody;
+  font-weight:300;
+  @media screen and (min-width:700px) {
+    // font-size: 16px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 18px;
+  }
+}
+// Paragraph Typography
+%siteStandardP {
+  font-size: 16px;
+  line-height:1.5;
+  font-family:$fontBody;
+  font-weight:500;
+  @media screen and (min-width:700px) {
+    // font-size: 24px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 18px;
+  }
+}
+%siteFeatureP {
+  font-size: 18px;
+  line-height:1.4;
+  font-family:$fontBody;
+  font-weight:300;
+  @media screen and (min-width:700px) {
+    font-size: 20px;
+  }
+  @media screen and (min-width:960px) {
+    font-size: 22px;
+  }
+}
+%siteSmallP {
+  font-size: 12px;
+  line-height:1.3;
+  font-family:$fontBody;
+  font-weight:500;
+  @media screen and (min-width:960px) {
+    font-size: 10px;
+  }
+}
+// Form Typography
+%formLabel {
+  font-size: 16px;
+  line-height:1.4;
+  font-family:$fontBody;
+  font-weight:500;
+  @media screen and (min-width:960px) {
+    font-size: 14px;
+  }
+}
+%formInput {
+  font-size: 16px;
+  line-height:1;
+  font-family:$fontBody;
+  font-weight:500;
+  @media screen and (min-width:960px) {
+    font-size: 18px;
+  }
+}
+// Calls to Action Typography
+%standardCta {
+  font-size: 16px;
+  line-height:1;
+  font-family:$fontBody;
+  font-weight:900;
+  @media screen and (min-width:960px) {
+    font-size: 18px;
+  }
+}
+%anotherCta {
+  font-size: 20px;
+  line-height:1;
+  font-family: $fontBody;
+  font-weight:900;
+  @media screen and (min-width:960px) {
+    font-size: 24px;
+  }
+}
+%featureCta {
+  font-size: 20px;
+  line-height:1;
+  font-family: $fontBody;
+  font-weight:900;
+  @media screen and (min-width:960px) {
+    font-size: 24px;
+  }
+}

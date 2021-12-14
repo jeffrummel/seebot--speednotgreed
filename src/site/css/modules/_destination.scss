@@ -1,0 +1,160 @@
+.dest {
+  display: -ms-grid;
+  display:grid;
+  justify-content:center;
+  -ms-overflow-x:hidden;
+  @supports (display: grid) {
+    
+  }
+  @media screen and (max-width:700px) {
+    -ms-grid-columns: 1fr auto 1fr;
+    grid-template-columns: 12px minmax(280px, 680px) 12px;
+  }
+  @media screen and (min-width:700px) and (max-width:960px) {
+    -ms-grid-columns: 2vw 96vw 2vw;
+    grid-template-columns: 1fr repeat(8, minmax(66px, 120px)) 1fr;
+    grid-column-gap:16px;
+  }
+  @media screen and (min-width:960px) {
+    -ms-grid-columns: 4vw 92vw 4vw;
+    grid-template-columns:1fr repeat(12, minmax(42px, 78px)) 1fr;
+    grid-column-gap:36px;
+  }
+  &:before {
+    content:'';
+    -ms-grid-row:1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-row:1;
+    grid-column:1 / -1;
+    background: $hedBg;
+    align-self: stretch;
+    justify-self:stretch;
+  }
+  &__hed {
+    -ms-grid-column: 2;
+    -ms-grid-row:1;
+    grid-column:2;
+    grid-row:1;
+    @media screen and (min-width:700px) and (max-width:960px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:1;
+      grid-column:2 / span 8;
+    }
+    @media screen and (min-width:960px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:1;
+      grid-column:2 / span 12;
+    }   
+  }
+  &__index {
+    -ms-grid-column: 2;
+    -ms-grid-row:7;
+    grid-column:2;
+    grid-row:5;
+    @media screen and (min-width:700px) and (max-width:960px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:7;
+        grid-column:2 / span 8;
+    }
+    @media screen and (min-width:960px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:7;
+      grid-column:2 / span 12;
+      padding-top:24px;
+    }   
+  }
+  &__marq {
+    min-height:70vh;
+    -ms-grid-column: 2;
+    -ms-grid-row:2;
+    grid-row:3;    
+    @media screen and (min-width:700px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:2;
+      grid-row:2;    
+    }
+  }
+  &__sup,
+  &__donate {
+    -ms-grid-column: 2;
+    -ms-grid-row:5;
+    grid-column: 1 / span 3;
+    @media screen and (min-width:700px) and (max-width:960px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:5;
+      grid-column:1 / span 10;
+    }
+    @media screen and (min-width:960px) {
+      -ms-grid-column: 2;
+      -ms-grid-row:5;
+        grid-column:1 / span 14;
+    }   
+  }
+  @import "../base/marq-grfx";
+  &__cards {
+    -ms-grid-column: 2;
+    -ms-grid-row:4;
+    grid-column: 2;
+    @media screen and (max-width:700px) {
+      padding:56px 0;
+    }
+    @media screen and (min-width:700px) and (max-width:960px) {
+      grid-column: 2 / span 8;
+    }
+    @media screen and (min-width:700px) {
+      grid-row:auto;
+      padding:64px 0;
+    }
+    @media screen and (min-width:960px) {
+      grid-column: 2 / span 12;
+    }
+  }
+  &__kickers {
+    -ms-grid-column: 2;
+    -ms-grid-row:9;
+    grid-column: 2;
+    @media screen and (max-width:700px) {
+      padding:56px 0;
+    }
+    @media screen and (min-width:700px) {
+      // grid-column: 2 / span 8;
+      grid-row:auto;
+      grid-column: 2 / span 8;
+      padding:64px 0;
+    }
+    @media screen and (min-width:960px) {
+      grid-column: 2 / span 12;
+    }  
+  }
+  &__foot {
+    -ms-grid-column: 2;
+    -ms-grid-row:10;
+    grid-row: 10;
+    grid-column: 2 / span 1;
+    @media screen and (min-width:700px) and (max-width:960px) {
+      grid-column:2 / span 8;
+    }
+    @media screen and (min-width:960px) {
+      grid-column:2 / span 12;
+    }   
+  }
+  &__billboards {
+    -ms-grid-column: 2;
+    -ms-grid-row:9;
+    grid-column: 2;
+    @media screen and (max-width:700px) {
+      padding:56px 0;
+    }
+    @media screen and (min-width:700px) {
+      // grid-column: 2 / span 8;
+      grid-row:auto;
+      grid-column: 2 / span 8;
+      padding:64px 0;
+    }
+    @media screen and (min-width:960px) {
+      grid-column: 2 / span 12;
+    }  
+
+  }
+}

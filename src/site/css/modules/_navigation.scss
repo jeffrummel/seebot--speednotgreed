@@ -1,0 +1,76 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/navigation/index";
+@import "../base/cta";
+
+.nav {
+//   justify-content: space-evenly;
+  @include hed01;
+  &__primary {
+    align-items: center;
+  }
+  &__primary {
+    &--item {
+      margin: $gap ($gap / 6);
+      text-align: center;
+    }
+    &--link {
+      padding: ($gap / 2);
+      @extend %siteH5;
+      text-transform: uppercase;
+      text-decoration:none;
+      color:$hedLink;
+      &:hover {
+        color:$hedLinkHover;
+      }
+      @media screen and (min-width:960px) {
+        padding: ($gap / 2) $gap;
+      }
+    }
+    &--action {
+      margin: 0 ($gap / 2);
+      @include cta;
+      @extend %siteH5;
+    }
+  }
+  &__secondary {
+    // top:64px;
+    &--item {
+      margin: 0 ($gap / 2);
+    }
+    &--link {
+      display: block;
+      width: ($gap * 3);
+      height: ($gap * 3);
+      padding: ($gap / 1.5);
+      margin: ($gap / 2) 0;
+      background:$hedIcon;
+      border-radius:50%;
+      border:1px solid $hedIconBorder;
+    }
+    &--text {
+      @extend %clipIt;
+    }
+    &--icon {
+      fill: $hedFill;
+    }
+  }
+  @media screen and (min-width:700px) {
+    &.visible {
+      height:auto;
+      min-height:auto;
+    }
+    &__secondary {
+      align-items:center;
+
+    }
+  }
+  @media screen and (min-width:960px) {
+    /* &__primary, */
+    &__secondary {
+      order:-1;
+      display:flex;
+      flex-flow:row nowrap;
+      align-items:center;
+      // justify-content:flex-end;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<header class="site__hed hed">
+    <h1 class="hed__logo"> 
+        <a href="/" title="homepage">
+            <span class="hed__logo--title">{{ metadata.siteName }}</span>
+            <img class="hed__logo--grfx" src="{{ options.logo }}" alt="{{ metadata.siteName }} Logo">
+            {# <svg class="hed__logo--grfx" viewbox="0 0 278 67">{% include '../_icons/__logo.svg.njk'%}</svg> #}
+
+        </a>
+    </h1>
+    <div class="hed__menu">
+      <button class="hed__menu--btn">
+        <span class="hed__menu--text">Show Menu</span>
+        <svg class="hed__menu--icon" viewBox="0 0 42 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">{% include '../_icons/__menu.svg.njk'%}</svg>
+      </button>
+    </div>
+    <nav class="hed__nav nav">
+      {% if navigation.nav_items %}
+        <ul class="nav__primary">
+          {% for nav_item in navigation.nav_items %}
+          {% if nav_item.path %}
+            <li class="nav__primary--item"><a class="nav__primary--link" href="{{ nav_item.path }}" title="{{ nav_item.label }}">{{ nav_item.label }}</a></li>
+          {% elif nav_item.link != '' %}
+            {% set joiner =  ['/', nav_item.link | slug] %}
+            <li class="nav__primary--item"><a class="nav__primary--link" href="{{ joiner | join if nav_item.link }}" title="{{ nav_item.label }}">{{ nav_item.label }}</a></li>
+
+          {% else %}
+          {% endif %}
+          {% endfor %}
+
+        </ul>
+      {% endif %}
+      {% if campaign.externalLink %}
+
+        <ul class="nav__secondary">
+          {% for externalLink in campaign.externalLink %}
+              <li class="nav__secondary--item">
+                <a class="nav__secondary--link" href="{{ externalLink.path }}" title="{{ externalLink.type }}"> 
+                  <span class="nav__secondary--text">{{ externalLink.type }}</span>
+                  <svg version="1.1" class="nav__secondary--icon {{externalLink.type}}" id="{{externalLink.type}}" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__' +  externalLink.type + '.svg.njk'%}</svg>
+                </a>
+              </li>
+          {% endfor %}
+          {% if campaign.donate %}
+            <li class="nav__secondary--item nav__secondary--donate"><a class="nav__primary--action" href="{{ campaign.donate }}" title="Donate">{{ campaign.donateTxt }}</a></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </nav>
+</header>

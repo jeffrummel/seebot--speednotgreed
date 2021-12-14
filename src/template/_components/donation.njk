@@ -1,0 +1,31 @@
+<section class="site__donate donate">
+      <header class="donate__hed">
+          <h3 class="donate__hed--title">{{ donate.hed }}</h3>
+      </header>
+  {# {% if donate.hed != '' %} #}
+  {# {% endif %} #}
+
+  <div class="donate__dek">
+    {% for usd in donate.usd %}
+
+    <a class="donate__dek--cta" href="{{ donate.donateUrl }}?{{ options.donateSrc }}={{ usd.amount }}" title="Donate ${{ usd.amount }}">${{ usd.amount }}</a>
+    {% endfor %}
+      <a class="donate__dek--cta txt" href="{{ donate.donateUrl }}" title="Donate other amount">Other</a>
+  </div>
+  {% set regExp = r/^(http|https).*/g %}
+  {% if donate.thumbnail and regExp.test(donate.thumbnail) %}
+    <img src="{{ donate.thumbnail }}">
+  {% elif donate.thumbnail %}
+  <figure class="donate__grfx">
+      <img class="lazy"
+      style="background: url('/pre{{ donate.thumbnail }}') no-repeat center;background-size:100% auto;" data-srcset="
+        /m{{ donate.thumbnail }} 320w,
+        /t{{ donate.thumbnail }} 760w,
+        /d{{ donate.thumbnail }}"
+        data-sizes="(min-width: 48em) 48em, 100vw"
+        data-src="{{ donate.thumbnail }}"
+        alt="{{ donate.hed }}"
+      />
+  </figure>
+  {% endif %}
+</section>

@@ -1,0 +1,97 @@
+
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/billboards/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/billboards/billboard";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+
+.billboards {
+  @include billboard07;
+  li {
+    list-style:none;
+  }
+  &__hed {
+    // text-align: center;
+    color:$bilHed;
+    @media screen and (min-width:700px) {
+      margin:($gap * 2) 0;
+    }
+    &--title {
+      margin-bottom: 18px;
+      @extend %siteH2;
+    }
+    &--dek {
+      @extend %siteStandardP;  
+    }
+    & a:link,
+    & a:visited {
+      color:$bilHed;
+      text-decoration:none;
+    }
+    & a:hover {
+      text-decoration:underline;
+    }
+  }
+}
+
+.bil {
+  @include bil04;
+  background: $bilBg;
+  border:2px solid $action;
+  overflow: hidden;
+  text-align: left;
+  @media screen and (min-width:700px) {
+    padding: $gap;
+  }
+  &:nth-of-type(odd) {
+    flex-grow: 1;
+  }
+  &--dek {
+    max-width: 538px;
+    color: $bilColor;
+  }
+  &--hed {
+    max-width: 538px;
+    @extend %siteH3;
+    color:$bilColor;
+    text-shadow: 0 0 4px rgb(0,0,0);
+  }
+  &--cta {
+    margin-top: $gap;
+    @include cta;
+    @extend %siteH5;
+    margin-right: $gap;
+  }
+  &--grfx {
+    // border-width:4px;
+    // border-color: $midground;
+    // border-style: solid;
+    overflow: hidden;
+    background: $foreground;
+    img {
+      // z-index: -1;
+      position: relative;
+      filter: opacity(53%);
+      // top:-12px;
+      // left:6px;
+      // border:4px solid $midground;
+      // 
+    }
+  }
+  &--dek {
+    @extend %siteStandardP;
+    color:$bilColor;
+    p {
+      margin-bottom: 16px;
+      @extend %siteStandardP;
+      color:$bilColor;
+      text-shadow: 0 0 4px rgb(0,0,0);
+      }
+  }
+  &--link:link,
+  &--link:visited {
+    color:$bilColor;
+    text-decoration:none;
+  }
+  &--link:hover {
+    text-decoration:underline;
+  }
+}

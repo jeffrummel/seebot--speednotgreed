@@ -1,0 +1,10 @@
+{
+  "form": "ea",
+  "id": "this-is-the-test",
+  "redirects": [
+    {
+      "slug": "/site",
+      "dest_url": "https://risingcampaigns.com"
+    }
+  ]
+}

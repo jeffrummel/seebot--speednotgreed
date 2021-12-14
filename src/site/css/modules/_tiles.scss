@@ -1,0 +1,116 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/tiles/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+.tiles {
+  @include tile03;
+  @media screen and (min-width:700px) and (max-width:960px) {
+    padding:0 0 50px;
+  }
+  @media screen and (min-width:960px) {
+    padding:0 0 60px;
+  }   
+  &__hed {
+    flex: 0 0 100%;
+    color:$tileHed;
+    text-align:center;
+    margin-bottom:24px;
+    &--title {
+      @extend %siteH1;
+    }
+    &--dek {
+      @extend %siteFeatureP;
+    }
+    & a:link,
+    & a:visited {
+      color:$tileHed;
+      text-decoration:none;
+    }
+    & a:hover {
+      text-decoration:underline;
+    }
+  }
+  &__item {
+    text-align: left;
+    width: 100%;
+    max-width: 876px;
+    // min-width: 40%;
+    @media screen and (max-width:700px) {
+      padding:36px 0;
+    }    
+    @media screen and (min-width:700px) {
+      padding:64px 0;
+      margin: 0 10px;
+      grid-gap: $gap ($gap * 2);
+    }
+    & > div,
+    &--links {
+      // @media screen and (max-width:700px) {
+      //   width:60vw;
+      // }
+      // @media screen and (min-width:700px) and (max-width:1100px)  {
+      //   width:30vw;
+      // }    
+      // @media screen and (min-width:1100px)  {
+      //   width:20vw;
+      // }    
+    }
+    &--hed {
+      @extend %siteH3;
+    }
+    &--sub {
+      @extend %siteH6;
+    }
+    &--dek {
+      @extend %siteStandardP;
+    }
+    &--grfx {
+      display:flex;
+      overflow: hidden;
+      border:2px solid;
+      max-height: 348px;
+      @media screen and (max-width:700px) {
+        width:60vw;
+        height:60vw;
+      }
+      @media screen and (min-width:700px) and (max-width:1100px)  {
+        width:30vw;
+        height:30vw;
+      }    
+      @media screen and (min-width:1100px)  {
+        width:20vw;
+        height:20vw;
+      }    
+      > * {
+        object-fit: cover;
+      }
+    }
+    &--links {
+      justify-content: left;
+    }
+  }
+}
+.item__foot {
+  &--link {
+    &.tel {
+      display: flex;
+      flex-flow: row-reverse nowrap;
+      align-items: center;
+      order: 1;
+      @extend %siteH6;
+      font-weight: 700;
+      color: $tileLink;
+    }
+    svg {
+      overflow: visible;
+      box-sizing: border-box;
+      display: block;
+      width: 36px;
+      height: 36px;
+      padding: 8px;
+      margin: $gap / 2;
+      background: white;
+      border-radius: 50%;
+      border: 1px solid #6BA0C9;
+      fill: $tileLink;
+    }
+  }
+}

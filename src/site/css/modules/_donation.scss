@@ -1,0 +1,53 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/supplemental/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+@import "../base/cta";
+
+.donate {
+  position: relative;
+  min-height:60vh;
+  @include sup09;
+  &.site__donate {
+    background:$donateBg;
+  }
+  &__hed {
+    z-index: 1;
+    &--title {
+      @extend %siteH1;
+      text-align: left;
+      color:$donateHed;
+    }
+  }
+  &__dek {
+    color:$donateColor;
+    display: flex;
+    flex-flow:row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding:12px 0;
+    @media screen and (min-width:700px) {
+      padding:48px 0;
+    }
+    &--cta {
+      flex:0 0 25%;
+      
+      margin:4%;
+      display: inline-block;
+      // margin:0 0 24px;
+      @include cta;
+      @extend %featureCta;
+      text-align:center;
+      @media screen and (min-width:700px) {
+        // margin:24px 0;
+      }
+      &.txt {
+        
+      }
+    }
+  }
+  &__grfx {
+    background: $donateBg;
+    > * {
+      filter: opacity(53%);
+    }
+  }
+}

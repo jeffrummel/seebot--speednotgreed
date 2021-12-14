@@ -1,0 +1,56 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/cards/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/cards/card";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+
+.index {
+  @include cards09;
+  @media screen and (max-width:700px) {
+    padding:56px 0;
+  }
+  @media screen and (min-width:700px) {
+    grid-row:auto;
+    grid-column: 2 / span 8;
+    padding:64px 0;
+  }
+  @media screen and (min-width:960px) {
+    grid-column: 2 / span 12;
+  }
+  li {
+    list-style:none;
+  }
+  &__hed {
+    color:$indexHed;
+    @extend %siteH1;
+    text-align: center;
+  }
+}
+
+.item {
+  @include card09;
+  border-bottom:1px solid $background;
+  &--hed {
+    @extend %siteH3;
+    color:$kickerHed;
+  }
+  &--sub {
+    @extend %siteH5;
+    color:$kickerHed;
+  }
+  &--grfx {
+    border-width:1px 1px 0 1px;
+    border-color: $background;
+    border-style: solid;
+  }
+  &--dek {
+    @extend %siteStandardP;
+    color:$kickerColor;
+  }
+  &--link:link,
+  &--link:visited {
+    color:$kickerHed;
+    text-decoration:none;
+  }
+  &--link:hover {
+    text-decoration:underline;
+  }
+}

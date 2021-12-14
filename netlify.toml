@@ -1,0 +1,22 @@
+[build]
+  command = "gulp build:production"
+  publish = "public"
+
+[context.deploy-preview]
+  command = "gulp build:production"
+# [[headers]]
+#   for = "/fonts/*.woff" # js files should be set this way
+#   [headers.values]
+#     Cache-Control = "public, max-age=604800"
+[[headers]]
+  for = "/favicon.ico" # js files should be set this way
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+# [[headers]]
+#   for = "/css/*.css" # js files should be set this way
+#   [headers.values]
+#     Cache-Control = "public, max-age=604800"
+# [[headers]]
+#   for = "/js/*.css" # js files should be set this way
+#   [headers.values]
+#     Cache-Control = "public, max-age=604800"

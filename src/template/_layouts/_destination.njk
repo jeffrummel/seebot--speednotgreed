@@ -1,0 +1,63 @@
+{% extends "_partials/wrapper.njk" %}
+
+{% block main %}
+<body class="site">
+  <a class="reader" href="#main-content">Skip to main content</a>
+  {% block header %}
+		{% include "_partials/header.njk" %}
+  {% endblock %}
+
+  <main id="main-content" class="{{ template }}">
+    {% if title != '' %}
+        <header class="{{template}}__hed">
+            <h3 class="{{template}}__hed--title">{{ title }}</h3>
+        </header>
+    {% endif %}
+
+    <div class="{{template}}__body">
+        {{ content | safe }}
+    </div>
+    {% if (template != 'embed') and thumbnail %}
+    <figure class="{{template}}__grfx"
+        style="background: url(/pre{{ thumbnail }}) no-repeat center;background-size:100% auto;">
+        <img class="lazy" data-srcset="
+          /m{{ thumbnail }} 320w,
+          /t{{ thumbnail }} 760w,
+          /d{{ thumbnail }} 960w"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="/d{{ thumbnail }}"
+          alt="{{ landing__title }}"
+        />
+    </figure>
+    {% endif %}
+
+
+  </main>
+  {% if kickers %}
+  {% for kickers in kicker_group %}
+  <section class="landing__billboards billboards">
+
+    <header class="billboards__hed">
+      <div class="billboards__hed--wrap">
+        <h2 class="billboards__hed--title">{{ kickers.kicker_group_title}}</h2>
+        <p class="billboards__hed--dek">{{ kickers.kicker_group_dek }}</p>
+      </div>
+    </header>
+        {% include "../_components/billboards.njk" %}
+
+  </section>
+  {% endfor %}
+  {% endif %}
+  <section id="main-content" class="dest__index tiles">
+    {% if item_group %}
+      {% for item_group in item_group %}
+      <header id="{{ item_group.group_title | slug }}" class="tiles__hed">
+        <h2 class="tiles__hed--title">{{ item_group.group_title }}</h2>
+        <p class="tiles__hed--dek">{{ item_group.group_dek }}</p>
+      </header>
+      {% include "../_components/collection.njk" %}
+      {% endfor %}
+    {% endif %}
+  </section>
+  {{ code | safe }}
+{% endblock %}

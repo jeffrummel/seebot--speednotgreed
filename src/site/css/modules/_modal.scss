@@ -1,0 +1,112 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/modal/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+
+.modal {
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  overflow-y: scroll;
+  background:$foreground;
+  z-index:10;
+  display: block;
+  color: $background;
+  &.hidden {
+    display: none;
+  }
+  &__hed {
+    text-align: center;
+    &--title {
+      @extend %siteH3;
+      color:$modalHed;
+    }
+  }
+  &__donate {
+    background:$modalBg;
+    &.donate {
+      padding: 0;
+
+    }
+  }
+  &__markup {
+    color:$modalColor;
+    // display: flex;
+    // flex-flow:row wrap;
+    // align-items: center;
+    // justify-content: flex-start;
+    padding:$gap 0;
+    @import "../base/_bodytxt";
+    @media screen and (min-width:700px) {
+      // padding:48px 0;
+    }
+    .fitVids-wrapper {
+      flex: 1 0 100%;
+    }
+  }
+  &__close {
+    position: absolute;
+    top:12px;
+    right:12px;
+    width:35px;
+    height:35px;
+    background:transparent;
+    border:0px solid $modalBorder;
+    border-radius: 50%;
+    &--icon {
+      fill:$modalFill;
+    }
+    &--txt {
+      @extend %clipIt;
+    }
+  }
+  &__button {
+    @include cta;
+    border: 0;
+    // display: block;
+    // margin:12px auto 48px;
+    // padding:12px;
+    // color:$background;
+    // background: transparent;
+    @extend %siteH5;
+  }
+  &__container {
+    max-width: 644px;
+    margin:0 auto;
+    padding:48px 12px;
+  }
+  &__form {
+    max-width: 466px;
+    padding:48px 12px;
+    margin:0 auto;
+  }
+  &__video {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px; 
+    height: 0; 
+    overflow: hidden;
+    margin:12px 0;
+    @media screen and (min-width:700px) {
+      margin:48px 0;
+    }
+    embed,
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }   
+  }
+  &--txt {
+    display: block;
+    margin:$gap auto;
+    border: 0;
+    background: transparent;
+    color: $modalLink;
+    text-decoration: underline;
+    text-align: center;
+    @extend %siteStandardP;
+  } 
+}

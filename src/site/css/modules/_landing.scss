@@ -1,0 +1,69 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/landing/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+@import "../base/cta";
+
+
+.landing {
+  position: relative;
+  @include sup05;
+  gap:1.5rem 0;
+  grid-column: 1 / -1;
+  grid-row:2;
+  overflow: hidden;
+  background: $landBg;
+  // @media screen and (min-width:700px) {
+  //   grid-gap: ($gap * 2) 0);
+  // }
+  // @media screen and (min-width:960px) {
+  //   grid-gap: ($gap * 2) ($gap * 3);
+  // }
+  &__hed {
+    padding: $gap;
+    &--title {
+      @extend %siteH1;
+      color:$landHed;
+    }
+  }
+  &__grfx {
+    width:100%;
+    height: 100%;
+    > * {
+      min-height:100%;
+    }
+  }
+  &__body {
+    width: 100%;
+    padding: $gap;
+    @import "../base/_bodytxt";
+    color:$landColor;
+    p {
+      @extend %siteFeatureP;
+    }
+    &--cta {
+      display: inline-block;
+      margin:0 0 24px;
+      @include cta;
+      @extend %siteH5;
+      @media screen and (min-width:700px) {
+        margin:24px 0;
+      }
+    }
+  }
+  &__billboards {
+    -ms-grid-column: 2;
+    -ms-grid-row:9;
+    grid-column: 2;
+    @media screen and (max-width:700px) {
+      padding:56px 0;
+    }
+    @media screen and (min-width:700px) {
+      // grid-column: 2 / span 8;
+      grid-row:auto;
+      grid-column: 2 / span 8;
+      padding:64px 0;
+    }
+    @media screen and (min-width:960px) {
+      grid-column: 2 / span 12;
+    }  
+  }
+}

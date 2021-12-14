@@ -1,0 +1,49 @@
+{% extends "_partials/wrapper.njk" %}
+{% block main %}
+<body class="site">
+  {% block header %}
+    {% include "_partials/header.njk" %}
+  {% endblock %}
+
+  <a class="reader" href="#main-content">Skip to main content</a>
+  <main id="main-content" class="
+    {% if blank_layout === true %}
+    embed
+    {% else %}
+    article
+    {% endif %}
+      ">
+    <header class="article__hed">
+        <h2 class="article__hed--title">{{ title }}</h2>
+
+        {% if actionLinks.actionPath %}
+          <a class="article__hed--action" href="{{ actionLinks.actionPath }}" title="{{ actionLinks.actionTxt }}">{{ actionLinks.actionTxt }}</a>
+        {% elif actionLinks.actionLink %}
+          <a class="article__hed--action" href="/{{ actionLinks.actionLink | slug }}" title="{{ actionLinks.actionTxt }}">{{ actionLinks.actionTxt }}</a>
+        {% endif %}
+
+
+        <p class="article--nut">{{ dek }}</p>
+    </header>
+    <div class="article__body">
+        {{ content | safe }}
+    </div>
+    {% if showSocial === true %}
+    <footer class="article__foot share">
+      <a class="share__link" href="https://www.facebook.com/sharer/sharer.php?u={{ metadata.url | urlencode }}{{ page.url | urlencode }}" title="Share on Facebook">
+        <span class="share__link--text">Facebook</span>
+        <svg version="1.1" class="share__link--icon facebook" id="facebook" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__facebook.svg.njk'%}</svg>
+
+      </a>
+      <a class="share__link" href="https://twitter.com/intent/tweet?text={{ tweet | urlencode }}%20{{ metadata.url | urlencode }}{{ page.url | urlencode }}" title="Share on Twitter"> 
+        <span class="share__link--text">Twitter</span>
+        <svg version="1.1" class="share__link--icon twitter" id="twitter" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__twitter.svg.njk'%}</svg>
+
+      </a>
+    </footer>
+    {% endif %}
+  </main>
+  {# <section class="cards">
+
+  </section> #}
+{% endblock %}

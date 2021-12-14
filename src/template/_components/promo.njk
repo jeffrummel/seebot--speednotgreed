@@ -1,0 +1,42 @@
+  <section class="dest__billboards billboards">
+  <header class="billboards__hed">
+    <h2 class="billboards__hed--title">{{ kickers.hed}}</h2>
+    {% if kickers.dek %}
+      <p class="billboards__hed--dek">{{kickers.dek }}</p>
+    {% endif %}
+  </header>
+    {% for kick in kickers.kick %}
+    <article class="billboards__item bil">
+        <h3 class="bil--hed">{{ kick.kick_title }}</h3>
+        <div class="bil--dek">
+          <p>{{ kick.kick_dek }}</p>
+        {%- for item in kick.kick_links -%}
+        {% if item.link.kick_path %}
+          <a class="bil--cta" href="{{ item.link.kick_path }}" {{ 'target=_blank' if item.link.target }} title="Link to {{ kicker.kick_label }}">{{ item.link.kick_label }}</a>
+        {% endif %}
+        {% if item.link.kick_link %}
+          <a class="bil--cta" href="/{{ item.link.kick_link | slug }}" {{ 'target=_blank' if item.link.target }} title="Link to {{ item.kick_label }}">{{ item.link.kick_label }}</a>
+        {% endif %}
+        {% endfor %}
+        </div>
+        {% set regExp = r/^(http|https).*/g %}
+        {% if kick.kick_img and regExp.test(kick.kick_img) %}
+          <figure class="bil--grfx"><img src="{{ kick.kick_img }}"></figure>
+        {% else %}
+        
+        <figure class="bil--grfx">
+          <img
+            style="background: url('/pre{{ kick.kick_img }}') no-repeat center;background-size:100% auto;" class="lazy" 
+            data-srcset="/m{{ kick.kick_img }} 320w,/t{{ kick.kick_img }} 760w"
+            data-sizes="(min-width: 48em) 48em, 100vw"
+            data-src="{{ kick.kick_img }}"
+            alt="{{ kick.kick_title }}"
+          />
+        </figure>
+        {% endif %}
+
+    </article>
+
+
+    {% endfor %}
+</section>

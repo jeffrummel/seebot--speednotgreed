@@ -1,0 +1,21 @@
+{% if 'ea' == backmatter.form %}
+
+<link rel='preload' href='https://d3rse9xjbp8270.cloudfront.net/at.js' as='script' crossorigin='anonymous'>
+<script type='text/javascript' src='https://d3rse9xjbp8270.cloudfront.net/at.js' crossorigin='anonymous'></script>
+    <div class="ngp-form marq__form form"
+     data-form-url="https://secure.everyaction.com/v1/Forms/{{ backmatter.id }}"
+     data-fastaction-endpoint="https://fastaction.ngpvan.com"
+     data-inline-errors="true"
+     data-fastaction-nologin="true"
+     data-databag-endpoint="https://profile.ngpvan.com"
+     data-databag="everybody"
+          data-mobile-autofocus="false">
+  </div>
+{% elif 'an' == backmatter.form %}
+
+  {# <script src='https://actionnetwork.org/widgets/v3/form/this-is-the-test?format=js&source=widget'></script>
+  <div id='can-form-area-this-is-the-test' style='width: 100%'><!-- this div is the target for our HTML insertion --></div> #}
+  <script src='//actionnetwork.org/widgets/v3/form/{{ backmatter.id }}?format=js&source=widget'></script>
+  <div id="can-form-area-{{ backmatter.id }}" class="marq__form form"></div>
+
+{% endif %}

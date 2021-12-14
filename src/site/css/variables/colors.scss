@@ -1,0 +1,127 @@
+// Sitewide Colors
+$foreground: #150e33;
+$midground: #6BA0C9;
+$background:white;
+$action: #B61C4A;
+$middark: $midground;
+
+
+$ctaColor: $background;
+$ctaBg: #B61C4A;
+$ctaColorHover: white;
+$ctaBgHover: #1cb688;
+$ctaBorder:#B61C4A;
+
+// Header Colors
+
+$hedColor: $foreground;
+$hedBg: $background;
+$hedIcon: $background;
+$hedIconBorder: $midground;
+$hedFill: $midground;
+$hedMenu: $midground;
+$hedLink: $foreground;
+$hedLinkHover: $midground;
+
+// Marquee Colors
+
+$marqBgM: $background;
+$marqBg: $background;
+$marqHed: $foreground;
+$marqColor: $foreground;
+$marqLink: $midground;
+$marqLinkHover: $midground;
+
+// Modal Colors
+$modalColor: $background;
+$modalBorder: $background;
+$modalBg: $foreground;
+$modalFill: $background;
+$modalHed: $background;
+$modalHedBg: $midground;
+$modalLink: $midground;
+$modalLinkHover: $midground;
+
+// Marquee Form Colors
+$marqInput: $foreground;
+$marqInputBg: $background;
+$marqLabel: $background;
+$marqInputBorder:$background; 
+$marqFormBg: transparent;
+$marqFormBg: transparent;
+$marqInputShadow: rgba($foreground, .3);
+
+// Page Form Colors
+$defaultInput: $foreground;
+$defaultInputBg: $background;
+$defaultLabel: $foreground;
+$defaultInputBorder:$midground; 
+$defaultFormBg: transparent;
+$defaultInputShadow: rgba($foreground, .3);
+
+// Card Colors
+$cardHed: $foreground;
+$cardColor: $foreground;
+$cardLink: $midground;
+$cardColor: $background;
+$cardLink: $background;
+$cardLinkHover: $midground;
+
+// Supplemental Colors
+$supBorder: $background;
+$supBg: $midground;
+$supHed: $background;
+$supHedBg: $foreground;
+$supColor: $background;
+$supLink: $midground;
+$supLinkHover: $midground;
+
+// Donate Colors
+$donateBorder: $background;
+$donateBg: $foreground;
+$donateHed: $background;
+$donateHedBg: $foreground;
+$donateColor: $foreground;
+$donateLink: $midground;
+$donateLinkHover: $midground;
+
+// Kicker Colors
+$kickerHed: $foreground;
+$kickerColor: $foreground;
+$kickerLink: $midground;
+$kickerLinkHover: $midground;
+
+// Index Colors
+$indexHed: $foreground;
+$indexColor: $foreground;
+$indexLink: $midground;
+$indexLinkHover: $midground;
+
+// Landing Colors
+$landBorder: $background;
+$landBg: $background;
+$landHed: $foreground;
+$landHedBg: $action;
+$landColor: $foreground;
+$landLink: $background;
+$landLinkHover: $foreground;
+
+// Tile Colors
+$tileHed: $foreground;
+$tileColor: $foreground;
+$tileLink: $midground;
+$tileLinkHover: $midground;
+
+// Billboards Colors
+$bilHed: $foreground;
+$bilBg: $foreground;
+$bilColor: $background;
+$bilLink: $background;
+$bilLinkHover: $action;
+$bilImgBorder: $midground;
+
+// Footer Colors
+$footColor:$foreground;
+$footBg: $background;
+$footLink: $foreground;
+$footLinkHover: $midground;

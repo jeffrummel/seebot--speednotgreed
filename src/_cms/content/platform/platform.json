@@ -1,0 +1,4 @@
+{
+  "layout": "./_platform.njk",
+  "permalink": "/platform/{{  title | slug  }}/index.html"
+}

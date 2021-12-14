@@ -1,0 +1,9 @@
+---
+permalink: '_redirects'
+---
+/tags /tags/all/
+{%- for redirect in backmatter.redirects -%}{{ '\n' }}
+
+{{ redirect.slug }} {{ redirect.dest_url | safe }}{{ '\n' }}
+
+{%- endfor -%}

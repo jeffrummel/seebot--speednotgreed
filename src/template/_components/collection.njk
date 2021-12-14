@@ -1,0 +1,73 @@
+      <ul class="tiles__set">
+        {% for item in item_group.item %}
+          <li id="{{ item.itemId }}" class="tiles__item">
+            <div>
+            <h3 class="tiles__item--hed">{{ item.itemHead }}</h3>
+            <h4 class="tiles__item--sub">{{ item.itemSub }}</h4>
+            {% if item.itemDek %}
+              <p class="tiles__item--dek">{{ item.itemDek }}</p>
+            {% endif %}
+            </div>
+            {% set regExp = r/^(http|https).*/g %}
+            {% if item.grfx and regExp.test(item.grfx) %}
+              <figure class="article__grfx"><img src="{{ item.grfx }}"></figure>
+            {% elif item.grfx %}
+            <figure class="tiles__item--grfx"
+              style="background: url(/pre{{ item.grfx }}) no-repeat center;background-size:100% auto;">
+              <img class="lazy" data-srcset="
+                /m{{ item.grfx }} 320w,
+                /t{{ item.grfx }} 760w,
+                {{ item.grfx }} 960w"
+                data-sizes="(min-width: 48em) 48em, 100vw"
+                data-src="/d{{ item.thumbnail }}"
+                alt="{{ item.itemHead }}"
+              />
+            </figure>
+            {% endif %}
+            {% if item.grfx %}
+            <footer class="tiles__item--links item__foot">
+                {% if item.tel %}
+                  <a class="item__foot--link tel" href="tel:+1{{ item.tel }}" title="phone"> 
+                    <span class="nav__secondary--tel">{{ item.tel }}</span>
+                    <svg version="1.1" class="nav__secondary--icon telephone" id="phone-link" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">{% include '../_icons/__phone.svg.njk'%}</svg>
+                  </a>
+                {% endif %}
+               {% if item.website %}
+                  <a class="item__foot--link" href="{{ item.website }}" title="website"> 
+                    <span class="nav__secondary--text">website</span>
+                    <svg version="1.1" class="nav__secondary--icon website" id="website-link" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__website.svg.njk'%}</svg>
+                  </a>
+                {% endif %}
+                {% if item.facebook %}
+                  <a class="item__foot--link" href="{{ item.facebook }}" title="Facebook"> 
+                    <span class="nav__secondary--text">Facebook</span>
+                    <svg version="1.1" class="nav__secondary--icon facebook" id="facebook-link" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__facebook.svg.njk'%}</svg>
+                  </a>
+                {% endif %}
+                {% if item.twitter %}
+                  <a class="item__foot--link" href="{{ item.twitter }}" title="twitter"> 
+                    <span class="nav__secondary--text">twitter</span>
+                    <svg version="1.1" class="nav__secondary--icon twitter" id="twitter-link" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__twitter.svg.njk'%}</svg>
+                  </a>
+                {% endif %}
+                {% if item.instagram %}
+                  <a class="item__foot--link" href="{{ item.instagram }}" title="instagram"> 
+                    <span class="nav__secondary--text">instagram</span>
+                    <svg version="1.1" class="nav__secondary--icon instagram" id="instagram-link" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__instagram.svg.njk'%}</svg>
+                  </a>
+                {% endif %}
+                {% if item.email %}
+                  <a class="item__foot--link" href="mailto:{{ item.email }}" title="email"> 
+                    <span class="nav__secondary--text">email</span>
+                    <svg version="1.1" class="nav__secondary--icon email" id="email-link" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__email.svg.njk'%}</svg>
+                  </a>
+                {% endif %}
+
+            </footer>
+            {% endif %}
+
+          </li>
+        {% endfor %}
+
+      </ul>
+

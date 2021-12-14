@@ -1,0 +1,52 @@
+@import "./node_modules/@risingcampaigns/rc-layout/src/layouts/supplemental/index";
+@import "./node_modules/@risingcampaigns/rc-layout/src/helpers/mixins";
+@import "../base/cta";
+
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+.sup {
+  position: relative;
+  @include sup03;
+  // padding:($gap * 3) ($gap * 1.5);
+  background: $supBg;
+  @media screen and (min-width:700px) {
+    grid-gap: ($gap * 2) 0;
+  }
+  @media screen and (min-width:960px) {
+    grid-gap: ($gap * 2) ($gap * 3);
+  }
+  &__hed {
+    padding: ($gap / 1.5);
+    &--title {
+      @extend %siteH2;
+      color:$supHed;
+    }
+  }
+  &__dek {
+    @import "../base/_bodytxt";
+    color:$supColor;
+    padding: ($gap / 1.5);
+    // background:$supBg;
+    &--cta {
+      display: inline-block;
+      margin:0 0 24px;
+      @include cta;
+      @extend %siteH5;
+      @media screen and (min-width:700px) {
+        margin:24px 0;
+      }
+    }
+  }
+  &__grfx {
+    align-self: stretch;
+    &> * {
+      object-position: center right;
+    }
+  }
+}

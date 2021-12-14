@@ -1,0 +1,14 @@
+.share {
+  display: flex;
+  flex-flow:row wrap;
+  align-items: center;
+  justify-content: flex-start;
+  &__link {
+    flex:0 0 48px;
+    margin:12px;
+    &--text {
+      @extend %clipIt;
+    }
+  }
+  &__icon {}
+}

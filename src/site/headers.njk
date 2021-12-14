@@ -1,0 +1,7 @@
+---
+permalink: '_headers'
+---
+{%- for passwordPage in backmatter.passwordPage -%}
+/{{ passwordPage.dest_url }}/ 
+  Basic-Auth: {{ passwordPage.username }}:{{ passwordPage.password }}{{ '\n' }}
+{%- endfor -%}

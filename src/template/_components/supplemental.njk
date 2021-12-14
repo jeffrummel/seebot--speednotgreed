@@ -1,0 +1,25 @@
+<section class="site__sup sup">
+    {% if supp.data.title != '' %}
+        <header class="sup__hed">
+            <h3 class="sup__hed--title">{{ supp.data.title }}</h3>
+        </header>
+    {% endif %}
+
+    <div class="sup__dek">
+        {{ supp.templateContent | safe }}
+        {% if supp.data.supCta_path %}
+            <a class="sup__dek--cta" href="{{ supp.data.supCta_path }}" {{ 'target=_blank' if supp.data.target }} title="{{ supp.data.supCtaTxt }}">{{ supp.data.supCtaTxt }}</a>
+        {% elif supp.data.supCta_link %}
+            <a class="sup__dek--cta" href="{{ supp.data.supCta_link | slug }}" {{ 'target=_blank' if supp.data.target }} title="{{ supp.data.supCtaTxt }}">{{ supp.data.supCtaTxt }}</a>
+        {% endif %}
+    </div>
+    <figure class="sup__grfx">
+        <img class="lazy" 
+        style="background: url('/pre{{ supp.data.sup__thumbnail }}') no-repeat center;background-size:100% auto;" 
+        data-srcset="/m{{ supp.data.sup__thumbnail }} 320w,/t{{ supp.data.sup__thumbnail }} 760w,/d{{ supp.data.sup__thumbnail }}"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="{{ supp.data.sup__thumbnail }}"
+          alt="{{ supp.data.sup__title }}"
+        />
+    </figure>
+</section>

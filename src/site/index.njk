@@ -1,0 +1,190 @@
+---
+layout: _home.njk
+permalink: index.html
+---
+{% for marquee in collections.marquee %}
+
+<main id="main-content" class="site__marq marq">
+
+    <header class="marq__hed">
+        <h2 class="marq__hed--title">{{ marquee.data.title }}</h2>
+    </header>
+    <div class="marq__dek">
+        {{ marquee.templateContent | safe }}
+    </div>
+
+    {% if 'null' != backmatter.form %}
+        {% include "_partials/forms.njk" %}
+    {% endif %}
+
+   
+</main>
+
+<figure class="dest__grfx">
+    <img class="dest__grfx--img lazy" style="background: url('/pre{{ marquee.data.thumbnail }}') no-repeat center;background-size:100% auto;" srcset="
+	    /m{{ marquee.data.thumbnail }} 320w,
+        /t{{ marquee.data.thumbnail }} 760w,
+        /d{{ marquee.data.thumbnail }} 960w"
+	    sizes="(min-width: 48em) 48em, 100vw"
+	    src="/d{{ marquee.data.thumbnail }}"
+	    alt="{{ marquee.data.title }}"
+    />
+</figure>
+{% endfor %}
+
+{% for supp in collections.supplemental %}
+
+    {% if contentOrderHome.p_content_block == 'platform' %}
+        <section class="dest__cards cards">
+          <h2 class="cards__hed"><a href="/campaigns/" title="All Campaigns">Campaigns</a></h2>
+          {% set cardIndex = collections.platform | head(3)  %}
+            {% include "_components/cards.njk" %}
+        </section>
+    {% elif contentOrderHome.p_content_block == 'blog' %}
+        <section class="dest__kickers kickers">
+          <h2 class="kickers__hed"><a href="/blog/" title=" View News">News</a></h2>
+            {% set itemKicker = collections.posts | head(-3) %}
+            {% include "_components/kickers.njk" %}
+        </section>  
+    {% elif contentOrderHome.p_content_block == 'supp' %}
+        {% include "_components/supplemental.njk" %}
+    {% elif contentOrderHome.p_content_block == 'donate' %}
+        {% include "_components/donation.njk" %}
+    {% elif contentOrderHome.p_content_block == 'kick' %}
+        {% include "_components/promo.njk" %}
+    {% endif %}
+
+
+    {% if contentOrderHome.s_content_block == 'platform' %}
+        <section class="dest__cards cards">
+          <h2 class="cards__hed"><a href="/campaigns/" title="All Campaigns">Campaigns</a></h2>
+            {% set cardIndex = collections.platform | head(3)  %}
+            {% include "_components/cards.njk" %}
+        </section>
+    {% elif contentOrderHome.s_content_block == 'blog' %}
+        <section class="dest__kickers kickers">
+          <h2 class="kickers__hed"><a href="/blog/" title=" View News">News</a></h2>
+            {% set itemKicker = collections.posts | head(-3) %}
+            {% include "_components/kickers.njk" %}
+        </section>  
+    {% elif contentOrderHome.s_content_block == 'jobs' %}
+        <section class="dest__index index">
+          <h2 class="index__hed"><a href="/jobs/" title=" View News">Jobs</a></h2>
+            {% set itemIndex = collections.jobs  %}
+            {% include "_components/itemIndex.njk" %}
+        </section>  
+    {% elif contentOrderHome.s_content_block == 'supp' %}
+        {% include "_components/supplemental.njk" %}
+    {% elif contentOrderHome.s_content_block == 'chapters' %}
+        <section class="dest__index tiles">
+            <h2 class="tiles__hed"><a href="/chapters/" title=" View News">Chapters</a></h2>
+            {% include "_components/chapters--home.njk" %}
+        </section>  
+    {% elif contentOrderHome.s_content_block == 'donate' %}
+        {% include "_components/donation.njk" %}
+    {% elif contentOrderHome.s_content_block == 'kick' %}
+        {% include "_components/promo.njk" %}
+    {% endif %}
+
+    {% if contentOrderHome.t_content_block == 'platform' %}
+        <section class="dest__cards cards">
+          <h2 class="cards__hed"><a href="/campaigns/" title="All Campaigns">Campaigns</a></h2>
+            {% set cardIndex = collections.platform | head(3)  %}
+            {% include "_components/cards.njk" %}
+        </section>
+    {% elif contentOrderHome.t_content_block == 'blog' %}
+        <section class="dest__kickers kickers">
+          <h2 class="kickers__hed"><a href="/blog/" title=" View News">News</a></h2>
+            {% set itemKicker = collections.posts | head(-3) %}
+            {% include "_components/kickers.njk" %}
+        </section>  
+    {% elif contentOrderHome.t_content_block == 'jobs' %}
+        <section class="dest__index index">
+          <h2 class="index__hed"><a href="/jobs/" title=" View News">Jobs</a></h2>
+            {% set itemIndex = collections.jobs  %}
+            {% include "_components/itemIndex.njk" %}
+        </section>  
+    {% elif contentOrderHome.t_content_block == 'supp' %}
+        {% include "_components/supplemental.njk" %}
+    {% elif contentOrderHome.t_content_block == 'chapters' %}
+        <section class="dest__index tiles">
+            <h2 class="tiles__hed"><a href="/chapters/" title=" View News">Chapters</a></h2>
+            {% include "_components/chapters--home.njk" %}
+        </section>  
+    {% elif contentOrderHome.t_content_block == 'donate' %}
+        {% include "_components/donation.njk" %}
+    {% elif contentOrderHome.t_content_block == 'kick' %}
+        {% include "_components/promo.njk" %}
+
+    {% endif %}
+
+
+        {% if contentOrderHome.q_content_block == 'platform' %}
+        <section class="dest__cards cards">
+          <h2 class="cards__hed"><a href="/campaigns/" title="All Campaigns">Campaigns</a></h2>
+            {% set cardIndex = collections.platform | head(3)  %}
+            {% include "_components/cards.njk" %}
+        </section>
+    {% elif contentOrderHome.q_content_block == 'blog' %}
+        <section class="dest__kickers kickers">
+          <h2 class="kickers__hed"><a href="/blog/" title=" View News">News</a></h2>
+            {% set itemKicker = collections.posts | head(-3) %}
+            {% include "_components/kickers.njk" %}
+        </section>  
+    {% elif contentOrderHome.q_content_block == 'jobs' %}
+        <section class="dest__index index">
+          <h2 class="index__hed"><a href="/jobs/" title=" View News">Jobs</a></h2>
+            {% set itemIndex = collections.jobs  %}
+            {% include "_components/itemIndex.njk" %}
+        </section>  
+    {% elif contentOrderHome.q_content_block == 'supp' %}
+        {% include "_components/supplemental.njk" %}
+    {% elif contentOrderHome.q_content_block == 'chapters' %}
+        <section class="dest__index tiles">
+            <h2 class="tiles__hed"><a href="/chapters/" title=" View News">Chapters</a></h2>
+            {% include "_components/chapters--home.njk" %}
+        </section>  
+    {% elif contentOrderHome.q_content_block == 'donate' %}
+        {% include "_components/donation.njk" %}
+    {% elif contentOrderHome.q_content_block == 'kick' %}
+        {% include "_components/promo.njk" %}
+    {% endif %}
+
+    
+    {% if contentOrderHome.c_content_block == 'platform' %}
+        <section class="dest__cards cards">
+          <h2 class="cards__hed"><a href="/campaigns/" title="All Campaigns">Campaigns</a></h2>
+            {% set cardIndex = collections.platform | head(3)  %}
+            {% include "_components/cards.njk" %}
+        </section>
+    {% elif contentOrderHome.c_content_block == 'blog' %}
+        <section class="dest__kickers kickers">
+          <h2 class="kickers__hed"><a href="/blog/" title=" View News">News</a></h2>
+            {% set itemKicker = collections.posts | head(-3) %}
+            {% include "_components/kickers.njk" %}
+        </section>  
+    {% elif contentOrderHome.c_content_block == 'jobs' %}
+        <section class="dest__index index">
+          <h2 class="index__hed"><a href="/jobs/" title=" View News">Jobs</a></h2>
+            {% set itemIndex = collections.jobs  %}
+            {% include "_components/itemIndex.njk" %}
+        </section>  
+    {% elif contentOrderHome.c_content_block == 'supp' %}
+        {% include "_components/supplemental.njk" %}
+    {% elif contentOrderHome.c_content_block == 'chapters' %}
+        <section class="dest__index tiles">
+            <h2 class="tiles__hed"><a href="/chapters/" title=" View News">Chapters</a></h2>
+            {% include "_components/chapters--home.njk" %}
+        </section>  
+    {% elif contentOrderHome.c_content_block == 'donate' %}
+        {% include "_components/donation.njk" %}
+    {% elif contentOrderHome.c_content_block == 'kick' %}
+        {% include "_components/promo.njk" %}
+    {% endif %}
+
+{% endfor %}
+{% for modal in collections.modal %}
+    {% include "_components/modal.njk" %}
+{% endfor %}
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async defer></script>
+

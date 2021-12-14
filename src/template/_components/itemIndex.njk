@@ -1,0 +1,23 @@
+{%- for item in itemIndex -%}
+
+  <article class="index__item item">
+      <h3 class="item--hed"> <a class="item--link" href="{{ item.url | url }}" title="{{ item.data.title }}">{{ item.data.title }}</a></h3>
+      <h5 class="kicker--sub">{{ item.data.date | readableDate }}</h5>
+      <p class="item--dek">{{ item.data.dek }}</p>
+      {% set regExp = r/^(http|https).*/g %}
+      {% if item.data.thumbnail and regExp.test(item.data.thumbnail) %}
+        <figure class="kicker--grfx"><img src="{{ item.data.thumbnail }}"></figure>
+      {% elif item.data.thumbnail %}
+      <figure class="item--grfx">
+        <img class="lazy"
+          style="background: url(/pre{{ item.data.thumbnail }}) no-repeat center;background-size:100% auto;"
+          data-srcset="/m{{ item.data.thumbnail }} 320w,/t{{ item.data.thumbnail }} 760w,"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="/d{{ item.data.thumbnail }}"
+          alt="{{ item.data.title }}"
+        />
+      </figure>
+      {% endif %}
+  </article>
+
+{%- endfor -%}

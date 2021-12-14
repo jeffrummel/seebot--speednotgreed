@@ -1,0 +1,12 @@
+		{% if (options.fontOptions != 'other') %}
+			 <link href="{{ options.font }}" rel="stylesheet"> 
+		{% else %}
+			{% include "./fonts.njk" %}
+		{% endif %}
+    {% set css %}
+      {% include "../../../temp/critical.css" %}
+    {% endset %}
+
+    <style>
+      {{ css | safe }}
+    </style> 

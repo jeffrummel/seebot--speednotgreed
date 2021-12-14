@@ -1,0 +1,84 @@
+@mixin foot01 {
+  @media screen and (min-width:700px) {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    margin:0;
+    &--credit {
+      flex:0 1 301px;
+      margin:0 24px 0 0;
+    }
+    &--terms {
+      flex:0 1 647px;
+      margin:0 0 0 24px;
+    }
+  }
+}
+@mixin foot02 {
+  &--credit {
+    padding:48px 0;
+    flex:0 1 auto;
+  }
+  &--terms {
+    flex:0 1 auto;
+    padding:0 48px;
+  }
+}
+@mixin foot03 {
+  @media screen and (min-width:700px) {
+    flex-direction: row-reverse;
+    align-items: baseline;
+    justify-content: space-between;
+    margin:0;
+    &--credit {
+      flex:0 1 301px;
+      margin:0 24px 0 0;
+    }
+    &--terms {
+      flex:0 1 647px;
+      margin:0 0 0 24px;
+    }
+  }
+}
+.foot {
+  display:flex;
+  flex-direction: column;
+  flex-wrap:nowrap;
+  align-items: center;
+  justify-content: center;
+  padding:48px 0;
+  background:$footBg;
+  box-shadow: 200px 0 0 0 $footBg, -200px 0 0 0 $footBg;
+  color:$footColor;
+  @media screen and (min-width:700px) and (max-width:960px) {
+    box-shadow: 500px 0 0 0 $footBg, -500px 0 0 0 $footBg;
+  }
+  @media screen and (min-width: 960px) {
+    box-shadow: 900px 0 0 0 $footBg, -900px 0 0 0 $footBg;
+  }
+  @media screen and (min-width: 4000px) {
+    box-shadow: 960px 0 0 0 $footBg, -960px 0 0 0 $footBg,  1920px 0 0 0 $footBg, -1920px 0 0 0 $footBg;
+  }
+  a {
+    &:link,
+    &:visited {
+      color:$footLink;
+    }
+    &:hover {
+      color:$footLinkHover;
+    }
+  }
+  &--credit {
+    @extend %siteSmallP;
+    text-align:center;
+    flex:0 0 auto;
+    padding:6px;
+    border:1px solid $midground;
+  }
+  &--terms {
+    @extend %siteSmallP;
+    padding:6px;
+    flex:0 0 auto;
+  }
+  @include foot01;
+}

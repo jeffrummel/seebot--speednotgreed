@@ -1,0 +1,73 @@
+{
+  "hed": "Ways to get involved",
+  "dek": "Dolor sit amet, consectetur adipiscing elit. Cras dapibus vulputate diam eu pretium.",
+  "kick": [
+    {
+      "kick_title": "Internal Action",
+      "kick_dek": "Dui mattis cras curabitur feugiat vulputate, sed netus dapibus cursus, potenti rhoncus elementum penatibus.",
+      "kick_img": "/img/uploads/card__03.JPG",
+      "kick_links": [
+        {
+          "link": {
+            "kick_label": "Internal Action",
+            "kick_link": "landing-page"
+          }
+        }
+      ]
+    },
+    {
+      "kick_title": "External Action",
+      "kick_dek": "Ultricies iaculis per malesuada aliquam mus, taciti dapibus litora purus feugiat aliquet, dictum orci primis ullamcorper.",
+      "kick_img": "/img/uploads/card__02.jpg",
+      "Link": {
+        "kick_label": "Take Action",
+        "kick_path": "#",
+        "kick_link": "Volunteer"
+      },
+      "kick_links": [
+        {
+          "link": {
+            "kick_label": "External Action",
+            "kick_path": "https://risingcampaigns.com/"
+          }
+        }
+      ]
+    },
+    {
+      "kick_title": "Internal Action",
+      "kick_dek": "Dui mattis cras curabitur feugiat vulputate, sed netus dapibus cursus, potenti rhoncus elementum penatibus.",
+      "kick_img": "/img/uploads/card__03.JPG",
+      "kick_links": [
+        {
+          "link": {
+            "kick_label": "Internal Action",
+            "kick_link": "landing page"
+          }
+        }
+      ]
+    },
+    {
+      "Link": {
+        "kick_label": "Take Action",
+        "kick_path": "#"
+      },
+      "kick_title": "Multiple Actions",
+      "kick_dek": "Sed netus dapibus cursus, potenti rhoncus elementum penatibus. Ultricies iaculis per malesuada aliquam mus, dictum orci primis ullamcorper.",
+      "kick_img": "/img/uploads/kicker__01.jpg",
+      "kick_links": [
+        {
+          "link": {
+            "kick_label": "First Action",
+            "kick_link": "Landing Page"
+          }
+        },
+        {
+          "link": {
+            "kick_label": "Second Action",
+            "kick_link": "Test Embed Page"
+          }
+        }
+      ]
+    }
+  ]
+}

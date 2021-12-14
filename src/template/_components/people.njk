@@ -1,0 +1,23 @@
+        <ul class="tiles__set">
+          {% for item in people.item %}
+            <li class="tiles__item">
+              <div>
+              <h3 class="tiles__item--hed">{{ item.itemHead }}</h3>
+              <h4 class="tiles__item--sub">{{ item.itemSub }}</h4>
+              </div>
+              <figure class="tiles__item--grfx"
+                style="background: url(/pre{{ item.thumbnail }}) no-repeat center;background-size:100% auto;">
+                <img class="lazy" data-srcset="
+                  /m{{ item.thumbnail }} 320w,
+                  /t{{ item.thumbnail }} 760w,
+                  {{ item.thumbnail }}"
+                  data-sizes="(min-width: 48em) 48em, 100vw"
+                  data-src="{{ item.thumbnail }}"
+                  alt="{{ item.title }}"
+                />
+              </figure>
+
+            </li>
+          {% endfor %}
+
+        </ul>

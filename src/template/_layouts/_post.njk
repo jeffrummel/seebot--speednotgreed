@@ -1,0 +1,71 @@
+{% extends "_partials/wrapper.njk" %}
+{% block main %}
+<body class="site">
+  <a class="reader" href="#main-content">Skip to main content</a>
+  {% block header %}
+    {% include "_partials/header.njk" %}
+  {% endblock %}
+
+
+  <main id="main-content" class="article">
+    <header class="article__hed">
+        <h2 class="article__hed--title">{{ title }}</h2>
+        {% if actionLinks.actionPath %}
+          <a class="article__hed--action" href="{{ actionLinks.actionPath }}" title="{{ actionLinks.actionTxt }}">{{ actionLinks.actionTxt }}</a>
+        {% elif actionLinks.actionLink %}
+          <a class="article__hed--action" href="/{{ actionLinks.actionLink | slug }}" title="{{ actionLinks.actionTxt }}">{{ actionLinks.actionTxt }}</a>
+        {% endif %}
+        <h5 class="article__hed--sub">{{ date | readableDate }}</h5>
+
+        <p class="article--nut">{{ dek }}</p>
+    </header>
+    <div class="article__body">
+        {{ content | safe }}
+         <aside class="article__links">
+          {% for tag in tags %}
+            {%- if collections.tagList.indexOf(tag) != -1 -%}
+              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                <a class="article__links--link" href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+            {%- endif -%}
+          {% endfor %}
+        </aside>
+    </div>
+    {% set regExp = r/^(http|https).*/g %}
+    {% if regExp.test(thumbnail) %}
+      <figure class="article__grfx"><img src="{{ thumbnail }}"></figure>
+    {% else %}
+
+    {% if (template != 'embed') and thumbnail %}
+    <figure class="article__grfx"
+        style="background: url(/pre{{ thumbnail }}) no-repeat center;background-size:100% auto;">
+        <img class="lazy" data-srcset="
+          /m{{ thumbnail }} 320w,
+          /t{{ thumbnail }} 760w,
+          /d{{ thumbnail }} 960w"
+          data-sizes="(min-width: 48em) 48em, 100vw"
+          data-src="/d{{ thumbnail }}"
+          alt="{{ landing__title }}"
+        />
+    </figure>
+    {% endif %}
+          {% endif %}
+
+    {% if showSocial === true %}
+    <footer class="article__foot share">
+      <a class="share__link" href="https://www.facebook.com/sharer/sharer.php?u={{ metadata.url | urlencode }}{{ page.url | urlencode }}" title="Share on Facebook">
+        <span class="share__link--text">Facebook</span>
+        <svg version="1.1" class="share__link--icon facebook" id="facebook" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__facebook.svg.njk'%}</svg>
+
+      </a>
+      <a class="share__link" href="https://twitter.com/intent/tweet?text={{ tweet | urlencode }}%20{{ metadata.url | urlencode }}{{ page.url | urlencode }}" title="Share on Facebook"> 
+        <span class="share__link--text">Twitter</span>
+        <svg version="1.1" class="share__link--icon twitter" id="twitter" x="0px" y="0px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">{% include '../_icons/__twitter.svg.njk'%}</svg>
+
+      </a>
+    </footer>
+    {% endif %}
+  </main>
+  {# <section class="cards">
+
+  </section> #}
+{% endblock %}

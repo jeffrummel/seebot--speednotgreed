@@ -1,0 +1,411 @@
+backend:
+  name: git-gateway
+  repo: risingcampaigns/rc--
+  branch: main
+logo_url: https://risingcampaigns.com/img/logo.png
+site_url: https://candidate.risingcampaigns.com
+media_folder: "src/_cms/img/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/img/uploads" # The src attribute for uploaded media will begin with /images/uploads
+# publish_mode: editorial_workflow
+collections:
+  - name: homepage
+    label: Homepage
+    files:
+      - file: /src/_cms/content/homepage/marquee.md
+        label: Marquee
+        name: home_marq
+        fields: 
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "permalink", name: "permalink", value: false, widget: "hidden"}
+          - {label: "Featured Image", name: "thumbnail", widget: "image"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: /src/_cms/content/homepage/supplemental.md
+        label: Supplemental
+        name: home_supp
+        fields: 
+          - {label: "Supplemental Headline", name: "title", widget: "string"}
+          - {label: "permalink", name: "permalink", value: false, widget: "hidden"}
+          - {label: "Supplemental Image", name: "sup__thumbnail", widget: "image"}
+          - {label: "Supplemental Body", name: "body", widget: "markdown"}
+          - {label: "Supplemental Link Label", name: "supCtaTxt", widget: "string"}
+          - {label: "External Link", name: "supCta_path", widget: "string", required: false}
+          - {label: "Link To Page", name: "supCta_link", widget: relation, collection: 'pages', searchFields: ['title'], valueField: '{{slug}}', displayFields: ['title'], required: false}
+          - {label: Open in new tab/window, name: target, widget: boolean, defaut: false, required: false} 
+      - file: /src/_cms/data/kickers.json
+        name: kick
+        label: Promotional Kickers
+        fields: 
+          - label: "Kicker Collection Title"
+            name: hed
+            widget: string
+            required: false
+          - label: "Kicker Collection Deck"
+            name: dek
+            widget: text
+            required: false
+          - label: Kickers
+            name: kick
+            widget: list
+            label_singular: New Kicker Item
+            fields:
+              - {label: "Kicker Title", name: "kick_title", widget: "string"}
+              - {label: "Kicker Deck", name: "kick_dek", widget: "text", required: false}
+              - {label: "Kicker Image", name: "kick_img", widget: "image", required: false}
+              - label: Action Links
+                name: kick_links
+                widget: list
+                max: 3
+                fields:
+                  - label: Link
+                    name: "link"
+                    label_singular: Add Kicker
+                    widget: "object"
+                    fields:
+                      - {label: Link Label, name: kick_label, widget: string}
+                      - {label: External Link, name: kick_path, widget: string, required: false}
+                      - {label: Link To Page, name: kick_link, widget: relation, collection: 'pages', searchFields: ['title'], valueField: '{{slug}}', displayFields: ['title'], required: false} 
+                      - {label: Open in new tab/window, name: target, widget: boolean, defaut: false, required: false} 
+      - file: /src/_cms/data/donate.json
+        label: Donation Amounts
+        name: donation
+        widget: list
+        fields:
+          - {label: Donation Headline, name: hed, widget: string}
+          - {label: Donation URL,name: donateUrl, widget: string}
+          - label: "Dollar Amount"
+            name: "usd"
+            widget: "list"
+            fields:
+              - {label: Amount, name: amount, widget: number}
+          - label: "Featured Image" 
+            name: "thumbnail"
+            widget: "image"
+            required: false
+      - file: /src/_cms/content/homepage/modal.md
+        label: Modal Content
+        name: modal
+        widget: list
+        fields:
+          - {label: "Publish", name: published, widget: boolean, default: false, required: false}
+          - {label: "permalink", name: "permalink", value: false, widget: "hidden"}
+          - {label: Hide modal for cookied users for X number of days, name: expires, widget: number, required: false}
+          - {label: Modal Headline, name: hed, widget: string}
+          - {label: "Modal Image", name: "grfx", widget: "image", required: false}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: Show Donation, name: donateShow, widget: boolean, default: false, required: false}
+          - {label: Donation URL,name: donateUrl, widget: string}
+          - label: "Dollar Amount"
+            name: "usd"
+            widget: "list"
+            fields:
+              - {label: Amount, name: amount, widget: number}          
+          - {label: "Link Label", name: "modalCtaTxt", widget: "string"}
+          - {label: "External Link", name: "modalCta_path", widget: "string", required: false}
+          - {label: "Link To Page", name: "modalCta_link", widget: relation, collection: 'pages', searchFields: ['title'], valueField: '{{slug}}', displayFields: ['title'], required: false}
+      - file: /src/_cms/data/contentOrderHome.json
+        label: Content Order
+        name: home_order
+        fields:
+          - label: "First Content Block"
+            name: "p_content_block"
+            widget: "select"
+            options:
+              - { label: "Kickers", value: "kick" }
+              - { label: "Platform", value: "platform" }
+              - { label: "Supplemental", value: "supp" }
+              - { label: "Blog", value: "blog" }
+              - { label: "Donate", value: "donate" }
+              - { label: "Hide", value: "null" }
+          - label: "Secondary Content Block"
+            name: "s_content_block"
+            widget: "select"
+            options:
+              - { label: "Kickers", value: "kick" }
+              - { label: "Platform", value: "platform" }
+              - { label: "Supplemental", value: "supp" }
+              - { label: "Blog", value: "blog" }
+              - { label: "Donate", value: "donate" }
+              - { label: "Hide", value: "null" }
+          - label: "Tertiary Content Block"
+            name: "t_content_block"
+            widget: "select"
+            options:
+              - { label: "Kickers", value: "kick" }
+              - { label: "Platform", value: "platform" }
+              - { label: "Supplemental", value: "supp" }
+              - { label: "Blog", value: "blog" }
+              - { label: "Donate", value: "donate" }
+              - { label: "Hide", value: "null" }
+          - label: "Quaternary Content Block"
+            name: "q_content_block"
+            widget: "select"
+            options:
+              - { label: "Kickers", value: "kick" }
+              - { label: "Platform", value: "platform" }
+              - { label: "Supplemental", value: "supp" }
+              - { label: "Blog", value: "blog" }
+              - { label: "Donate", value: "donate" }
+              - { label: "Hide", value: "null" }
+          - label: "Quinary Content Block"
+            name: "c_content_block"
+            widget: "select"
+            options:
+              - { label: "Kickers", value: "kick" }
+              - { label: "Platform", value: "platform" }
+              - { label: "Supplemental", value: "supp" }
+              - { label: "Blog", value: "blog" }
+              - { label: "Donate", value: "donate" }
+              - { label: "Hide", value: "null" }
+
+  - name: "posts" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Posts" # Used in the UI
+    folder: "/src/_cms/content/posts/" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    preview_path: /news/{{year}}/{{month}}/{{day}}/{{slug}}/
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "External Link", name: "url", widget: "string", required: false}
+      - name: tags
+        label: Tags
+        widget: list
+        summary: '{{fields.tag}}'
+        collapsed: false
+        field: {label: "Tag", name: "tag", widget: "string", pattern: ['^[a-z\d\ ]+$', "Lowercase Alphanumeric (a-z, 0-9), spaces accepted"]}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Deck", name: "dek", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Show Social Share Links", name: "showSocial", widget: "boolean", default: true, required: false}
+      - {label: "Twitter Share Link", name: "tweet", widget: "text", required: false}
+  - name: "platform" # Used in routes, e.g., /admin/collections/blog
+    label: "Platform Posts" # Used in the UI
+    folder: "/src/_cms/content/platform" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    preview_path: platform/{{slug}}/
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - {label: "Deck", name: "dek", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "pages" # Used in routes, e.g., /admin/collections/blog
+    label: "Pages" # Used in the UI
+    folder: "/src/_cms/content/pages" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    preview_path: "{{slug}}/"
+    fields: # The fields for each document, usually in front matter
+      - label: "Page Type"
+        name: "template"
+        widget: "select"
+        options:
+        - { label: "Landing Page", value: "landing" }
+        - { label: "Embed Page", value: "embed" }
+        default: "landing"
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - {label: "Deck", name: "dek", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - label: Kickers
+        name: kicker_group
+        label_singular: New Kicker Collection
+        widget: list
+        fields:
+          - {label: "Collection Title", name: "kicker_group_title", widget: "string", required: false}
+          - {label: "Collection Deck", name: "kicker_group_dek", widget: "text", required: false}
+          - label: "Kickers"
+            name: "kicker"
+            label_singular: New Kicker Item
+            widget: list
+            fields:
+              - {label: "Kicker Title", name: "kick_title", widget: "string", required: false}
+              - {label: "Kicker Deck", name: "kick_dek", widget: "text", required: false}
+              - {label: "Kicker Image", name: "kick_img", widget: "image", required: false}
+              - label: Action Links
+                name: kick_links
+                widget: list
+                max: 3
+                fields:
+                  - label: Link
+                    name: "link"
+                    widget: "object"
+                    fields:
+                      - {label: Link Label, name: kick_label, default: "Take Action", widget: string}
+                      - {label: External Link, name: kick_path, widget: string, required: false}
+                      - {label: Link To Page, name: kick_link, widget: relation, collection: 'pages', searchFields: ['title'], valueField: '{{slug}}', displayFields: ['title'], required: false} 
+                      - {label: Open in new tab/window, name: target, widget: boolean, defaut: false, required: false} 
+
+      - label: Group
+        name: item_group
+        label_singular: New Group Collection
+        widget: list
+        fields:
+          - {label: "Group Title", name: "group_title", widget: "string"}
+          - {label: "Group Deck", name: "group_dek", widget: "text", required: false}
+          - label: Item
+            name: item
+            label_singular: New Group Item
+            widget: list
+            fields: 
+              - {label: Name, name: itemHead, widget: string}
+              - {label: ID, name: itemId, widget: string, required: false}
+              - {label: Title, name: itemSub, widget: string, required: false}
+              - {label: "Deck", name: "itemDek", widget: "text", required: false}
+              - {label: Photo/Logo, name: grfx, widget: image, required: false}
+              - {label: facebook, name: facebook, widget: string, required: false}
+              - {label: twitter, name: twitter, widget: string, required: false}
+              - {label: instagram, name: instagram, widget: string, required: false}
+              - {label: website, name: website, widget: string, required: false}
+              - {label: email, name: email, widget: string, required: false}
+              - {label: tel, name: tel, widget: string, required: false}
+      - {label: "Custom Code", name: "code", widget: "text", required: false}
+
+  - name: settings
+    label: Settings
+    files:
+      - file: /src/_cms/data/options.json
+        label: Website Options
+        name: siteOptions
+        fields:
+          - {label: Logo, name: logo, widget: image}
+          - label: "Tracking"
+            name: "trackType"
+            widget: "select"
+            options:
+              - { label: "Google Analytics", value: "ga" }
+              - { label: "Google Tag Manager", value: "gtm" }
+              - { label: "Other", value: "other" }
+            default: ga
+          - {label: Unique Identifier, name: uuid, widget: string, required: false }
+          - label: "Fonts"
+            name: "fontOptions"
+            widget: "select"
+            options:
+              - { label: "Typekit", value: "typekit" }
+              - { label: "Google Fonts", value: "google" }
+              - { label: "Other", value: "other" }
+            default: other
+          - {label: Link to Font Stylesheet, name: font, widget: string}
+          - label: Donation Source
+            name: donateSrc
+            widget: select
+            options: 
+              - {label: "NGP/VAN/EveryAction", value: "am"} 
+              - {label: "ActBlue", value: "amount"}
+            default: ["ActBlue"]
+
+      - file: /src/_cms/data/metadata.json
+        label: Metadata
+        name: metadata
+        fields:
+          - {label: "Site Title", name: "title", widget: "string"}
+          - {label: "Site Description", name: "description", widget: "text", pattern: ["^.{2,160}$", "Max 160 characters"] }
+          - {label: "Site Url", name: "url", widget: "string"}
+          - label: "Country/Region"
+            name: region 
+            widget: select
+            default: United States of America
+            options:
+              - {label: "Canada", value: CA}
+              - {label: "United States of America", value: US}
+          - label: "Site Language"
+            name: "lang"
+            widget: "select" 
+            default: English
+            options: 
+              - {label: English, value: en}
+              - {label: French, value: fr}
+              - {label: Spanish, value: es}
+          - {label: "Author Name", name: "authorName", widget: "string"}
+          - {label: "Author Email Address", name: "authorEmail", widget: "string"}
+          - {label: "Facebook URL", name: "facebookUrl", widget: "string", required: false}
+          - {label: "Author Twitter Handle", name: "authorHandle", widget: "string", required: false}
+          - {label: "Copyright Holder Name", name: "copyright", widget: "string"}
+          - {label: "Footer Paid for credit", name: "paidFor", widget: "string"}
+          - {label: "Footer Short Description", name: "shortDesc", widget: "string", required: false}
+          # - {label: "Maximum Posts Per Page", name: "maxPostsPerPage", widget: "number", default: 5}
+          - {label: "Social Share Image", name: "socialImg", widget: "image"}
+          - {label: "Twitter Card Image", name: "socialImgTw", widget: "image"}
+          - {label: "Show Paid for credit", name: "showThemeCredit", widget: "boolean", default: true, required: false}
+      - file: /src/_cms/data/navigation.json
+        label: Navigation
+        name: navigation
+        fields:
+          - label: Navigation
+            name: nav_items
+            widget: list
+            fields:
+              - {label: Link Label, name: label, widget: string}
+              - {label: Path, name: path, widget: string, required: false}
+              - {label: Link, name: link, widget: relation, collection: 'pages', searchFields: ['title'], valueField: '{{slug}}', displayFields: ['title'], required: false} 
+      - file: /src/_cms/data/campaign.json
+        label: Campaign Details
+        name: campaign
+        fields:
+          - {label: Donate Link, name: donate, widget: string, required: false}
+          - {label: Donate Text, name: donateTxt, widget: string, required: false}
+          - label: External Links
+            name: externalLink
+            widget: list
+            fields:
+              - label: Type
+                name: "type"
+                widget: "select"
+                options:
+                  - { label: "ActBlue", value: "actblue" }
+                  - { label: "Facebook", value: "facebook" }
+                  - { label: "Twitter", value: "twitter" }
+                  - { label: "YouTube", value: "youtube" }
+                  - { label: "Instagram", value: "instagram" }
+                  - { label: "SnapChat", value: "snapchat" }
+                  - { label: "LinkedIn", value: "linkedin" }
+                  - { label: "TikTok", value: "tiktok" }
+                  - { label: "Other", value: "other" }
+              - {label: URL, name: path, widget: string}
+      - file: /src/_cms/data/backmatter.json
+        label: Backmatter
+        name: backmatter
+        fields:
+          - label: Action Form Type
+            name: form
+            widget: select
+            options: 
+            - {label: None, value: "null" }
+            - {label: Action Network, value: "an" }
+            - {label: Every Action, value: "ea" }
+            - {label: Mailchimp, value: "mc" }
+            - {label: Custom, value: "other" }
+            default: ["None"]
+          - {label: "Action Form ID", name: "id", widget: "string", required: false}
+          - label: Redirects
+            name: redirects
+            widget: list
+            fields:
+              - {label: Slug, name: slug, widget: string}
+              - {label: destination url, name: dest_url, widget: string}
+          - label: Password Protected Pages
+            name: passwordPage
+            widget: list
+            fields:
+              - {label: Page To Protect, name: dest_url, widget: relation, collection: 'pages', searchFields: ['title'], valueField: '{{slug}}', displayFields: ['title'], required: false} 
+              - {label: Username, name: username, widget: string}
+              - {label: Password, name: password, widget: string}
+
+  # - name: people
+  #   label: Endorsements/Team
+  #   files: 
+  #     - file: /src/_cms/data/people.json
+  #       name: people
+  #       label: Add People
+  #       fields: 
+  #         - label: Page Title
+  #           name: hed
+  #           widget: string
+  #         - label: Person
+  #           name: item
+  #           widget: list
+  #           fields: 
+  #             - {label: Name, name: itemHead, widget: string}
+  #             - {label: Title, name: itemSub, widget: string, required: false}
+  #             - {label: Photo/Logo, name: grfx, widget: image, required: false}

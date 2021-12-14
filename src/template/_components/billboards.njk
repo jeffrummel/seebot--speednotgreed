@@ -1,0 +1,41 @@
+{%- for kicker in kickers.kicker -%}
+
+    <article class="billboards__item bil">
+        {% if kicker.kick_title %}
+          <h3 class="bil--hed">{{ kicker.kick_title }}</h3>
+        {% endif %}
+        <div class="bil--dek">
+        {% if kicker.kick_dek %}
+          <p>{{ kicker.kick_dek }}</p>
+        {% endif %}
+        {%- for item in kicker.kick_links -%}
+        {% if item.link.kick_path %}
+          <a class="bil--cta" href="{{ item.link.kick_path }}" {{ 'target=_blank' if item.link.target }} title="Link to {{ item.link.kick_title }}">{{ item.link.kick_label }}</a>
+        {% endif %}
+        {% if item.link.kick_link %}
+          <a class="bil--cta" href="/{{ item.link.kick_link | slug }}" {{ 'target=_blank' if item.link.target }} title="Link to {{ item.link.kick_label }}">{{ item.link.kick_label }}</a>
+        {% endif %}
+        {% endfor %}
+        </div>
+        {% set regExp = r/^(http|https).*/g %}
+        {% if kicker.kick_img and regExp.test(kicker.kick_img) %}
+          <figure class="bil--grfx"><img src="{{ kicker.kick_img }}"></figure>
+        {% else %}
+        
+        <figure class="bil--grfx">
+          <img class="lazy" 
+            style="background: url(/pre{{ kicker.kick_img }}) no-repeat center;background-size:100% auto;"
+            data-srcset="
+            /m{{ kicker.kick_img }} 320w,
+              /t{{ kicker.kick_img }} 760w,
+              {{ kicker.kick_img }} 960w"
+            data-sizes="(min-width: 48em) 48em, 100vw"
+            data-src="/d{{ kicker.kick_img }}"
+            alt="{{ title }}"
+          />
+        </figure>
+        {% endif %}
+
+    </article>
+
+{%- endfor -%}
